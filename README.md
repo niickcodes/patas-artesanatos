@@ -65,6 +65,6 @@ patas-artesanatos/
 * **Administrador:** `admin@patasartesanatos.com` *(senha configurada no `.env` para rota `/admin`)*
 * **Cartões de Teste (Algoritmo de Luhn):**
   * Visa: `4111 1111 1111 1234`
-  * Mastercard: `5105 1051 0510 5105`
-  * Elo: `6363 6828 9381 7342`
+  * Mastercard: `5555 5555 5555 4444`
+  * Cielo: `6505 2900 0000 2190`
 
