@@ -1,0 +1,58 @@
+================================================================================
+PATAS & PONTO ARTESANATOS - CARTÕES DE CRÉDITO PARA TESTE E SIMULAÇÃO
+================================================================================
+
+O sistema de checkout agora valida qualquer número de cartão matematicamente válido
+através do Algoritmo de Luhn e registra o pedido no PostgreSQL com o status:
+"PAGAMENTO APROVADO", gerando o código de rastreio dos Correios fictício.
+
+Abaixo estão cartões de teste matematicamente válidos por bandeira:
+
+--------------------------------------------------------------------------------
+1. BANDEIRA VISA:
+   Número do Cartão: 4532 0151 1283 0366
+   Nome Impresso:    CLIENTE TESTE VISA
+   Validade:         12/28
+   CVV:              123
+   Status Esperado:  PAGAMENTO APROVADO
+
+--------------------------------------------------------------------------------
+2. BANDEIRA MASTERCARD:
+   Número do Cartão: 5555 5555 5555 4444
+   Nome Impresso:    CLIENTE TESTE MASTERCARD
+   Validade:         11/29
+   CVV:              456
+   Status Esperado:  PAGAMENTO APROVADO
+
+--------------------------------------------------------------------------------
+3. BANDEIRA AMERICAN EXPRESS (AMEX):
+   Número do Cartão: 3782 822463 10005
+   Nome Impresso:    CLIENTE TESTE AMEX
+   Validade:         10/27
+   CVV:              7890
+   Status Esperado:  PAGAMENTO APROVADO
+
+--------------------------------------------------------------------------------
+4. BANDEIRA ELO:
+   Número do Cartão: 6363 6800 0000 0007
+   Nome Impresso:    CLIENTE TESTE ELO
+   Validade:         08/30
+   CVV:              321
+   Status Esperado:  PAGAMENTO APROVADO
+
+================================================================================
+CREDENCIAS DOS USUÁRIOS DE TESTE PADRÃO:
+================================================================================
+1. ADMINISTRADOR GERAL (PORTAL /admin E BANCO DE DADOS):
+   E-mail: admin@patasartesanatos.com
+   Senha:  Patasartesanatos1973@
+   Role:   admin
+   (Permite gerenciar produtos, pedidos, status, usuários e banco de dados)
+
+2. CLIENTE COMUM (LOJA, CARRINHO E MEUS PEDIDOS):
+   E-mail: teste1@gmail.com
+   Senha:  Teste1234@
+   Role:   customer
+   (Permite adicionar produtos à cestinha, finalizar compras e ver "Meus Pedidos")
+================================================================================
+
