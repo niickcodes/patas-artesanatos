@@ -60,7 +60,8 @@ patas-artesanatos/
 
 ## 🚀 Perfis e Testes para Avaliação
 
-* **Cliente Comum:** `teste1@gmail.com` *(para testar carrinho e pedidos)*
+*   **E-mail:** `teste1@gmail.com`
+*   **Senha:** `Teste1234@` *(Credencial genérica de uso público exclusiva para homologação do carrinho).*
 * **Administrador:** `admin@patasartesanatos.com` *(senha configurada no `.env` para rota `/admin`)*
 * **Cartões de Teste (Algoritmo de Luhn):**
   * Visa: `4111 1111 1111 1234`
