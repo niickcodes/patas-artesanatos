@@ -1,62 +1,69 @@
-# 🐾 Miau & Amigos — Ateliê Artesanal de Bichinhos (Full-Stack PostgreSQL)
+# 🐾 Patas Artesanatos — E-commerce Seguro (OWASP Top 10)
 
-E-commerce artesanal completo organizado em duas pastas independentes (**`backend/`** e **`frontend/`**), desenvolvido com **React 19 + Tailwind CSS + Vite** no frontend e **Node.js + Express + PostgreSQL** no backend.
+
+## 📝 Sobre o Projeto
+O **Patas Artesanatos** é um e-commerce full-stack de bichinhos artesanais estruturado em monorepo, auditado sob os critérios do **OWASP Top 10** para resistir a testes de intrusão e falhas de segurança.
+
+Organizado em duas pastas independentes (**`backend/`** e **`frontend/`**), desenvolvido com **React 19 + Tailwind CSS + Vite** no frontend e **Node.js + Express + PostgreSQL** no backend.
 
 ---
 
-## 🗂️ Estrutura do Projeto (`backend/` e `frontend/`)
-
+## 🗂️ Estrutura do Repositório
 ```text
-miau-artesanatos/
-├── backend/                       # Backend Node.js + Express + PostgreSQL (Porta 3001)
-│   ├── config/
-│   │   ├── database.js            # Conexão PostgreSQL (pg.Pool + PGlite persistente)
-│   │   └── seedProducts.js        # Catálogo base sincronizado no PostgreSQL
-│   ├── controllers/               # Controllers (produtos, clientes, pedidos, admin)
-│   ├── data/pgdata/               # Armazenamento persistente do banco PostgreSQL
-│   ├── middleware/adminAuth.js    # Autenticação restrita do painel do banco
-│   ├── routes/                    # Rotas da API (/api/products, /customers, /orders, /admin)
-│   ├── services/                  # Serviços em background (ex: autoCustomerScheduler.js)
-│   ├── sql/schema.sql             # DDL Oficial PostgreSQL (5 tabelas relacionais + índices)
-│   ├── .env.example               # Exemplo de variáveis de ambiente do servidor
-│   ├── index.js                   # Ponto de entrada do servidor Express
-│   └── package.json               # Manifesto e scripts do Backend
-│
-├── frontend/                      # Frontend React 19 + Vite + Tailwind CSS
-│   ├── public/images/             # Fotografias de estúdio dos produtos
-│   ├── src/
-│   │   ├── components/            # Componentes React (CartDrawer, CustomerModal, DatabaseModal...)
-│   │   ├── data/products.js       # Catálogo e categorias do frontend
-│   │   ├── services/api.js        # Cliente HTTP integrado à API Backend
-│   │   └── utils/formatters.js    # Máscaras de CEP (ViaCEP), CPF, Celular, Preço e UFs
-│   ├── index.html                 # HTML principal da aplicação
-│   ├── postcss.config.js          # Configuração PostCSS
-│   ├── tailwind.config.js         # Tema e paleta Tailwind CSS
-│   ├── vite.config.js             # Configuração do Vite + Proxy /api -> localhost:3001
-│   └── package.json               # Manifesto e scripts do Frontend
-│
-└── package.json                   # Workspace raiz para iniciar Backend + Frontend juntos
+patas-artesanatos/
+├── backend/           # API Node.js + Express + PostgreSQL (Porta 3001)
+│   ├── config/        # Conexão e scripts de sementes (seed)
+│   ├── controllers/   # Regras de negócio
+│   ├── routes/        # Endpoints protegidos
+│   └── sql/schema.sql # DDL Oficial PostgreSQL
+├── frontend/          # React 19 + Vite + Tailwind CSS
+└── package.json       # Orquestração simultânea dos ambientes
 ```
 
 ---
 
-## 🚀 Como Executar
+## 🔒 Segurança (OWASP Best Practices)
+* **SQL Injection (A03):** Parametrização estrita de queries no PostgreSQL.
+* **Broken Authentication (A07):** Hash de senhas via `bcrypt` (Custo = 12).
+* **IDOR / BOLA (A01):** Tokens de sessão validados diretamente no backend.
+* **XSS & Clickjacking (A03/A05):** Cabeçalhos HTTP de segurança (CSP & X-Frame-Options).
+* **CSRF / CORS:** Configurações restritas para o ambiente local.
 
-### 1. Rodar Backend e Frontend simultaneamente (na raiz):
-```bash
-npm run dev
-```
+---
 
-### 2. Rodar apenas o Backend:
-```bash
-npm run backend
-# ou diretamente na pasta backend:
-cd backend && npm run dev
-```
+## 💻 Instalação Rápida
 
-### 3. Rodar apenas o Frontend:
-```bash
-npm run frontend
-# ou diretamente na pasta frontend:
-cd frontend && npm run dev
-```
+1. **Clonar e instalar dependências:**
+   ```bash
+   git clone https://github.com
+   cd patas-artesanatos
+   npm install
+   ```
+
+2. **Configurar o Banco de Dados (`.env`):**
+   Duplique o arquivo de exemplo e insira a senha do seu PostgreSQL local:
+   ```bash
+   cp backend/.env.example backend/.env
+   ```
+   Abra `backend/.env` e configure:
+   ```env
+   PG_PASSWORD=sua_senha_do_postgresql
+   ```
+
+3. **Iniciar o Sistema:**
+   O comando abaixo cria as tabelas, aplica os seeds e sobe a aplicação:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🚀 Perfis e Testes para Avaliação
+
+* **Cliente Comum:** `teste1@gmail.com` *(para testar carrinho e pedidos)*
+* **Administrador:** `admin@patasartesanatos.com` *(senha configurada no `.env` para rota `/admin`)*
+* **Cartões de Teste (Algoritmo de Luhn):**
+  * Visa: `4111 1111 1111 1234`
+  * Mastercard: `5105 1051 0510 5105`
+  * Elo: `6363 6828 9381 7342`
+
