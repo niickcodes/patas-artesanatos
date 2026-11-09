@@ -35,7 +35,7 @@ patas-artesanatos/
 
 1. **Clonar e instalar dependências:**
    ```bash
-   git clone https://github.com
+   git clone https://github.com/niickcodes/patas-artesanatos.git
    cd patas-artesanatos
    npm install
    ```
